@@ -99,7 +99,7 @@ function parse_motranslator()
 {
     $result = array();
     foreach (mo_files() as $file) {
-        $reader = new MoTranslator\MoTranslator($file);
+        $reader = new MoTranslator\Translator($file);
         $result[] = $reader;
     }
     return $result;
