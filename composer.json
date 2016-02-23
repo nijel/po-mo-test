@@ -1,0 +1,6 @@
+{
+    "require": {
+        "gettext/gettext": "^3.5",
+        "phpmyadmin/motranslator": "master-dev"
+    }
+}
