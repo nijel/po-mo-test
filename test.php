@@ -18,15 +18,6 @@ function measure($func)
 }
 
 
-function po_files()
-{
-    static $ret = null;
-    if (is_null($ret)) {
-        $ret = glob('../phpmyadmin/po/*.po');
-    }
-    return $ret;
-}
-
 function mo_files()
 {
     static $ret = null;
@@ -35,24 +26,6 @@ function mo_files()
     }
     return $ret;
 }
-
-function parse_sepia()
-{
-    foreach (po_files() as $file) {
-        $fileHandler = new Sepia\FileHandler($file);
-
-        $poParser = new Sepia\PoParser($fileHandler);
-        $entries  = $poParser->parse();
-    }
-}
-
-function parse_gettext_po()
-{
-    foreach (po_files() as $file) {
-        $translations = Gettext\Translations::fromPoFile($file);
-    }
-}
-
 
 function parse_gettext_mo()
 {
@@ -74,25 +47,6 @@ function parse_php_gettext()
         $result[] = $reader;
     }
     return $result;
-}
-
-function parse_pofile()
-{
-    foreach (po_files() as $file) {
-        $poFile = new Geekwright\Po\PoFile();
-        $poFile->readPoFile($file);
-    }
-}
-
-function parse_drupal()
-{
-    foreach (po_files() as $file) {
-        $reader = new Drupal\Component\Gettext\PoStreamReader();
-        $reader->setUri($file);
-        $reader->open();
-        while ($item = $reader->readItem()) {
-        }
-    }
 }
 
 function parse_motranslator()
@@ -123,7 +77,3 @@ measure('parse_gettext_mo');
 measure('parse_php_gettext');
 measure('parse_motranslator');
 measure('parse_moreader');
-//measure('parse_sepia');
-//measure('parse_gettext_po');
-//measure('parse_pofile');
-//measure('parse_drupal');
