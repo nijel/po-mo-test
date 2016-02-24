@@ -31,7 +31,7 @@ function mo_files()
 {
     static $ret = null;
     if (is_null($ret)) {
-        $ret = glob('../phpmyadmin/locale/*/LC_MESSAGES/phpmyadmin.mo');
+        $ret = glob('./locale/*/LC_MESSAGES/phpmyadmin.mo');
     }
     return $ret;
 }
