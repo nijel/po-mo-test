@@ -69,10 +69,20 @@ function parse_moreader()
     return $result;
 }
 
+function parse_pgettext()
+{
+    $result = array();
+    foreach (mo_files() as $file) {
+        $result[] = \Pgettext\Mo::fromfile($file);
+    }
+    return $result;
+}
+
 for ($i = 0; $i < 10; $i++) {
     echo "\nTest round $i\n";
     measure('parse_gettext_mo');
     measure('parse_php_gettext');
     measure('parse_motranslator');
     measure('parse_moreader');
+    measure('parse_pgettext');
 }
