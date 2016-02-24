@@ -105,12 +105,24 @@ function parse_motranslator()
     return $result;
 }
 
+function parse_moreader()
+{
+    $result = array();
+    foreach (mo_files() as $file) {
+        $reader = new \MoReader\Reader();
+        $result[] = $reader->load($file);
+    }
+    return $result;
+}
+
 measure('parse_gettext_mo');
 measure('parse_php_gettext');
 measure('parse_motranslator');
+measure('parse_moreader');
 measure('parse_gettext_mo');
 measure('parse_php_gettext');
 measure('parse_motranslator');
+measure('parse_moreader');
 //measure('parse_sepia');
 //measure('parse_gettext_po');
 //measure('parse_pofile');
