@@ -69,11 +69,10 @@ function parse_moreader()
     return $result;
 }
 
-measure('parse_gettext_mo');
-measure('parse_php_gettext');
-measure('parse_motranslator');
-measure('parse_moreader');
-measure('parse_gettext_mo');
-measure('parse_php_gettext');
-measure('parse_motranslator');
-measure('parse_moreader');
+for ($i = 0; $i < 10; $i++) {
+    echo "\nTest round $i\n";
+    measure('parse_gettext_mo');
+    measure('parse_php_gettext');
+    measure('parse_motranslator');
+    measure('parse_moreader');
+}
