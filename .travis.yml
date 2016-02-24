@@ -12,3 +12,7 @@ install:
 
 script:
   - php test.php
+
+cache:
+  directories:
+    - $HOME/.composer/cache/
