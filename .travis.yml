@@ -12,7 +12,7 @@ install:
   - composer install
 
 script:
-  - php test.php
+  - php test-load.php
 
 cache:
   directories:
