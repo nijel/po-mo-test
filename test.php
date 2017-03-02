@@ -1,31 +1,6 @@
 <?php
 
-require './vendor/autoload.php';
-require './php-gettext/gettext.php';
-require './php-gettext/streams.php';
-
-function measure($func)
-{
-    $memory = memory_get_usage();
-    $start = microtime(true);
-
-    $data = call_user_func($func);
-
-    $end = microtime(true);
-    $diff = $end - $start;
-    $memory = memory_get_usage() - $memory;
-    echo "Ran $func in $diff seconds. takes $memory bytes\n";
-}
-
-
-function mo_files()
-{
-    static $ret = null;
-    if (is_null($ret)) {
-        $ret = glob('./locale/*/LC_MESSAGES/phpmyadmin.mo');
-    }
-    return $ret;
-}
+require './lib.php';
 
 function parse_gettext_mo()
 {
@@ -78,11 +53,10 @@ function parse_pgettext()
     return $result;
 }
 
-for ($i = 0; $i < 10; $i++) {
-    echo "\nTest round $i\n";
-    measure('parse_gettext_mo');
-    measure('parse_php_gettext');
-    measure('parse_motranslator');
-    measure('parse_moreader');
-    measure('parse_pgettext');
-}
+measure_main(array(
+    'parse_gettext_mo',
+    'parse_php_gettext',
+    'parse_motranslator',
+    'parse_moreader',
+    'parse_pgettext',
+));
