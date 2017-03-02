@@ -53,7 +53,7 @@ function parse_motranslator()
 {
     $result = array();
     foreach (mo_files() as $file) {
-        $reader = new MoTranslator\Translator($file);
+        $reader = new \PhpMyAdmin\MoTranslator\Translator($file);
         $result[] = $reader;
     }
     return $result;

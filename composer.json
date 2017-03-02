@@ -1,7 +1,7 @@
 {
     "require": {
         "gettext/gettext": "^3.5",
-        "phpmyadmin/motranslator": "~0 || ~1.0",
+        "phpmyadmin/motranslator": "^3.0",
         "maxakawizard/mo-reader": "^0.3.0",
         "pgettext/pgettext": "^0.2.2"
     }
